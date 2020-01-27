@@ -1,6 +1,6 @@
 const express = require('express');
-const morgan = require('morgan');
 const app = express();
+const morgan = require('morgan');
 const { mongoose }= require('./database');
 const cors = require('cors');
 
@@ -8,12 +8,12 @@ const cors = require('cors');
 app.set('port', process.env.PORT || 3000);
 
 //Middlewares (librerias)
-app.use(morgan('dev'));  //morgan de información acerca de las consultas a la página
+app.use(morgan('dev'));
 app.use(express.json());
-app.use(cors({origin: 'http://localhost:4200'})); //cors sirve para habilitar la conexión con angular
+app.use(cors({origin:'http://localhost:4200'}));
 
 //Routes
-app.use('/api/teachers', require('./routers/teachers.routers'));
+app.use('/api/orders', require('./routers/orders.routers'));
 
 //Starting the server
 app.listen(app.get('port'),()=>{
